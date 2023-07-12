@@ -1,13 +1,11 @@
-import Card from "components/Card/Card";
 import Layout from "components/Layout/Layout";
+import Plugins from "pages/Plugins/Plugins";
 import React from "react";
 
 const ResponsivePage: React.FC = () => {
   return (
     <Layout>
-      <Card />
-      <Card />
-      <Card />
+      <Plugins />
     </Layout>
   );
 };

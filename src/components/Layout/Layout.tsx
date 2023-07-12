@@ -10,7 +10,10 @@ const Layout: React.FC<IProps> = ({ children }) => {
   return (
     <S.PageWrapper>
       <Navigation />
-      <S.ContentWrapper>{children}</S.ContentWrapper>
+      <S.ContentWrapper>
+        <S.Title>Marketing plugins</S.Title>
+        {children}
+      </S.ContentWrapper>
     </S.PageWrapper>
   );
 };

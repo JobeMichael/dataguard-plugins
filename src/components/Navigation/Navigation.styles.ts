@@ -15,11 +15,17 @@ export const TabList = styled.ul`
 `;
 
 export const TabItem = styled.li<{ active?: boolean }>`
-  padding: 20px 10px;
+  padding: 15px 10px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
   font-weight: ${({ active }) => (active ? "bold" : "normal")};
   background-color: ${({ active }) => (active ? "#fff" : "transparent")};
   ${({ active }) => active && "border-left: 5px solid #f3216b;"}
+
+  span {
+    margin-left: 10px;
+  }
 `;
 
 export const ContentWrapper = styled.div`
@@ -37,7 +43,9 @@ export const Footer = styled.div`
     rgba(242, 242, 242, 1) 100%
   );
   width: 100%;
-  height: 40px;
+  height: 55px;
   position: absolute;
   bottom: 0;
+  display: flex;
+  justify-content: center;
 `;

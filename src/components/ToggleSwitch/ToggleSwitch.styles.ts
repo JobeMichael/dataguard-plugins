@@ -1,11 +1,17 @@
 import styled from "styled-components";
 
-interface ToggleSwitchProps {
-  label?: string;
-}
+export const ToggleSwitchContainer = styled.div<{ labelposition: string }>`
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+
+  ${({ labelposition }) =>
+    labelposition === "bottom" && "flex-direction: column;"};
+`;
 
 export const ToggleSwitchWrapper = styled.label`
   display: inline-block;
+  position: relative;
   width: 60px;
   height: 34px;
 `;
@@ -31,6 +37,9 @@ export const Slider = styled.span`
     background-color: white;
     transition: 0.4s;
     border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `;
 
@@ -47,13 +56,14 @@ export const ToggleSwitchInput = styled.input.attrs({ type: "checkbox" })`
 `;
 
 export const IconWrapper = styled.div<{ isChecked: boolean }>`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+  position: absolute;
+  top: 54%;
+  transform: translateY(-50%);
+  ${({ isChecked }) => (isChecked ? "left: 35px" : "right: 35px")};
+  /* right: ${({ isChecked }) => (isChecked ? "19px" : "28px")}; */
   color: ${({ isChecked }) => (isChecked ? "#2196f3" : "#ccc")};
 `;
 
 export const Label = styled.span`
-  margin-left: 8px;
+  margin-right: 8px;
 `;
