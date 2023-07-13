@@ -5,13 +5,14 @@ import * as S from "./Layout.styles";
 
 interface IProps {
   data: IPlugins;
+  setAllDisabled: (active: boolean) => void;
   children: React.ReactNode;
 }
 
-const Layout: React.FC<IProps> = ({ data, children }) => {
+const Layout: React.FC<IProps> = ({ data, children, setAllDisabled }) => {
   return (
     <S.PageWrapper>
-      <Navigation data={data} />
+      <Navigation data={data} setAllDisabled={setAllDisabled} />
       <S.ContentWrapper>
         <S.Title>Marketing plugins</S.Title>
         {children}

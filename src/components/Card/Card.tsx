@@ -11,6 +11,7 @@ interface IProps {
   plugin: PluginProps;
   tabKey?: string;
   pluginKey?: string;
+  allDisabled?: boolean;
   toggleCallback: (tabKey: string, active: boolean, pluginKey: string) => void;
 }
 
@@ -19,6 +20,7 @@ const Card: React.FC<IProps> = ({
   toggleCallback,
   tabKey,
   pluginKey,
+  allDisabled,
 }) => {
   const { title, description, active, disabled } = plugin;
 
@@ -27,7 +29,7 @@ const Card: React.FC<IProps> = ({
   };
 
   return (
-    <S.Card disabled={disabled}>
+    <S.Card disabled={disabled || allDisabled}>
       <S.CardHeader>
         <S.CardTitle>{title}</S.CardTitle>
         <ToggleSwitch label="Active" active={active} callback={handleToggle} />

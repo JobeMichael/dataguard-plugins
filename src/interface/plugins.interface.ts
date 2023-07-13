@@ -7,6 +7,7 @@ export interface Data {
   tabs: string[];
   tabdata: Record<string, Tab>;
   plugins: { [key: string]: IPlugin };
+  disabled: boolean;
 }
 
 export interface IPlugin {

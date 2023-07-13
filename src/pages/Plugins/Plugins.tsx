@@ -47,6 +47,8 @@ const getPluginsData = (data: IPlugins, tabKey: string) => {
 
 const ResponsivePage: React.FC = () => {
   const { data, loading, error } = useFetch<IPlugins>(API_URL);
+  const [allDisabled, setAllDisabled] = React.useState<boolean>(false);
+  console.log("🚀 ~ file: Plugins.tsx:51 ~ allDisabled:", allDisabled);
   const { plugin } = useParams<{
     plugin: string;
   }>();
@@ -56,6 +58,8 @@ const ResponsivePage: React.FC = () => {
 
   useEffect(() => {
     if (!data || plugin) return;
+
+    setAllDisabled(data.data.disabled);
 
     const { tabdata, tabs } = data.data;
     const url = `${tabdata[tabs[0]].title.toLocaleLowerCase()}`;
@@ -93,11 +97,10 @@ const ResponsivePage: React.FC = () => {
         fieldStatus: active,
       }),
     });
-    console.log(response);
   };
 
   return (
-    <Layout data={data}>
+    <Layout data={data} setAllDisabled={setAllDisabled}>
       <S.Wrapper>
         {pluginSortedKey.map((key) => (
           <Card
@@ -106,6 +109,7 @@ const ResponsivePage: React.FC = () => {
             toggleCallback={handleToggleCallback}
             tabKey={selectedTabKey || data.data.tabs[0]}
             pluginKey={key}
+            allDisabled={allDisabled}
           />
         ))}
       </S.Wrapper>

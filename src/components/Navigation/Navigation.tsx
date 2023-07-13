@@ -8,13 +8,15 @@ import * as S from "./Navigation.styles";
 
 interface IProps {
   data: IPlugins;
+  setAllDisabled: (active: boolean) => void;
 }
 
-const Navigation: React.FC<IProps> = ({ data }) => {
+const Navigation: React.FC<IProps> = ({ data, setAllDisabled }) => {
   const { tabdata, tabs } = data.data;
   const { plugin } = useParams<{ plugin: string }>();
 
   const handleTooltip = async (active: boolean) => {
+    setAllDisabled(!active);
     const url = `${API_URL}`;
     const response = await fetch(url, {
       method: "PUT",
@@ -52,6 +54,7 @@ const Navigation: React.FC<IProps> = ({ data }) => {
           label="All plugins enabled"
           labelPosition="left"
           callback={handleTooltip}
+          active={!data.data.disabled}
         />
       </S.Footer>
     </S.NavigationWrapper>
