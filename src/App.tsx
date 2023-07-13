@@ -1,13 +1,8 @@
-import Layout from "components/Layout/Layout";
-import Plugins from "pages/Plugins/Plugins";
 import React from "react";
+import AppRoutes from "routes";
 
-const ResponsivePage: React.FC = () => {
-  return (
-    <Layout>
-      <Plugins />
-    </Layout>
-  );
+const App: React.FC = () => {
+  return <AppRoutes />;
 };
 
-export default ResponsivePage;
+export default App;

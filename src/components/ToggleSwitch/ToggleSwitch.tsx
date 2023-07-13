@@ -6,16 +6,21 @@ import * as S from "./ToggleSwitch.styles";
 interface ToggleSwitchProps {
   label?: string;
   labelPosition?: "left" | "bottom";
+  active?: boolean;
+  callback: (active: boolean) => void;
 }
 
 const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
   label,
   labelPosition = "bottom",
+  active = false,
+  callback,
 }) => {
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(active);
 
   const handleChange = () => {
     setIsChecked(!isChecked);
+    callback(!isChecked);
   };
 
   return (

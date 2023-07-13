@@ -19,9 +19,15 @@ export const TabItem = styled.li<{ active?: boolean }>`
   cursor: pointer;
   display: flex;
   align-items: center;
+  text-transform: capitalize;
   font-weight: ${({ active }) => (active ? "bold" : "normal")};
   background-color: ${({ active }) => (active ? "#fff" : "transparent")};
   ${({ active }) => active && "border-left: 5px solid #f3216b;"}
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 
   span {
     margin-left: 10px;
