@@ -5,7 +5,7 @@ export const LogoWrapper = styled.div`
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
-  margin-bottom: 20px;
+  margin: 15px 0 30px;
 
   span {
     font-weight: 700;

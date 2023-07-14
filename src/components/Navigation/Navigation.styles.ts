@@ -22,7 +22,7 @@ export const TabItem = styled.li<{ active?: boolean }>`
   text-transform: capitalize;
   font-weight: ${({ active }) => (active ? "bold" : "normal")};
   background-color: ${({ active }) => (active ? "#fff" : "transparent")};
-  ${({ active }) => active && "border-left: 5px solid #f3216b;"}
+  border-left: 5px solid ${({ active }) => (active ? "#f3216b" : "transparent")};
 
   a {
     text-decoration: none;
@@ -42,12 +42,13 @@ export const ContentWrapper = styled.div`
   gap: 20px;
 `;
 
-export const Footer = styled.div`
+export const Footer = styled.div<{ active: boolean }>`
   background: linear-gradient(
     0deg,
-    rgb(224 120 143) 0%,
+    ${({ active }) => (active ? "rgb(120 224 156)" : "rgb(224, 120, 143)")} 0%,
     rgba(242, 242, 242, 1) 100%
   );
+
   width: 100%;
   height: 55px;
   position: absolute;

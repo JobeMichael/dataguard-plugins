@@ -4,17 +4,21 @@ import { FiPower } from "react-icons/fi";
 import * as S from "./ToggleSwitch.styles";
 
 interface ToggleSwitchProps {
-  label?: string;
+  activeLabel?: string;
+  inactiveLabel?: string;
   labelPosition?: "left" | "bottom";
   active?: boolean;
   callback: (active: boolean) => void;
+  showIcon?: boolean;
 }
 
 const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
-  label,
+  activeLabel,
+  inactiveLabel,
   labelPosition = "bottom",
   active = false,
   callback,
+  showIcon = false,
 }) => {
   const [isChecked, setIsChecked] = useState(active);
 
@@ -23,18 +27,26 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
     callback(!isChecked);
   };
 
+  const labelSuffix = isChecked ? "active" : "blocked";
+
   return (
     <S.ToggleSwitchContainer labelposition={labelPosition}>
-      {label && labelPosition === "left" && <S.Label>{label}</S.Label>}
+      {labelPosition === "left" && (
+        <S.Label>{isChecked ? activeLabel : inactiveLabel}</S.Label>
+      )}
       <S.ToggleSwitchWrapper>
         <S.ToggleSwitchInput checked={isChecked} onChange={handleChange} />
         <S.Slider>
           <S.IconWrapper isChecked={isChecked}>
-            {isChecked ? <FiPower /> : <FiPower />}
+            {showIcon && <> {isChecked ? <FiPower /> : <FiPower />}</>}
           </S.IconWrapper>
         </S.Slider>
       </S.ToggleSwitchWrapper>
-      {label && labelPosition === "bottom" && <S.Label>{label}</S.Label>}
+      {labelPosition === "bottom" && (
+        <S.Label className={`toggle_label_${labelSuffix}`}>
+          {isChecked ? activeLabel : inactiveLabel}
+        </S.Label>
+      )}
     </S.ToggleSwitchContainer>
   );
 };

@@ -23,7 +23,7 @@ export const Slider = styled.span`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: #e0282e;
   transition: 0.4s;
   border-radius: 34px;
 
@@ -47,7 +47,7 @@ export const ToggleSwitchInput = styled.input.attrs({ type: "checkbox" })`
   display: none;
 
   &:checked + ${Slider} {
-    background-color: #2196f3;
+    background-color: #00b96b;
   }
 
   &:checked + ${Slider}:before {
@@ -61,7 +61,7 @@ export const IconWrapper = styled.div<{ isChecked: boolean }>`
   transform: translateY(-50%);
   ${({ isChecked }) => (isChecked ? "left: 35px" : "right: 35px")};
   /* right: ${({ isChecked }) => (isChecked ? "19px" : "28px")}; */
-  color: ${({ isChecked }) => (isChecked ? "#2196f3" : "#ccc")};
+  color: ${({ isChecked }) => (isChecked ? "#00B96B" : "#E0282E")};
 `;
 
 export const Label = styled.span`

@@ -32,7 +32,12 @@ const Card: React.FC<IProps> = ({
     <S.Card disabled={disabled || allDisabled}>
       <S.CardHeader>
         <S.CardTitle>{title}</S.CardTitle>
-        <ToggleSwitch label="Active" active={active} callback={handleToggle} />
+        <ToggleSwitch
+          inactiveLabel="Blocked"
+          activeLabel="Allowed"
+          active={active}
+          callback={handleToggle}
+        />
       </S.CardHeader>
       <S.CardDescription>{description}</S.CardDescription>
     </S.Card>
