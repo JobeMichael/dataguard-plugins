@@ -5,7 +5,7 @@ export interface IPlugins {
 
 export interface Data {
   tabs: string[];
-  tabdata: Record<string, Tab>;
+  tabdata: Record<string, ITab>;
   plugins: { [key: string]: IPlugin };
   disabled: boolean;
 }
@@ -15,7 +15,7 @@ export interface IPlugin {
   description: string;
 }
 
-export interface Tab {
+export interface ITab {
   title: string;
   icon: string;
   active: string[];

@@ -15,7 +15,6 @@ export const TabList = styled.ul`
 `;
 
 export const TabItem = styled.li<{ active?: boolean }>`
-  padding: 15px 10px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -27,6 +26,8 @@ export const TabItem = styled.li<{ active?: boolean }>`
   a {
     text-decoration: none;
     color: inherit;
+    padding: 15px;
+    width: 100%;
   }
 
   span {
