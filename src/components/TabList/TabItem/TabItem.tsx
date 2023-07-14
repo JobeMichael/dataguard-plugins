@@ -13,7 +13,7 @@ interface IProps {
 const TabItem: React.FC<IProps> = ({ isActive, url, tab, icon, title }) => {
   return (
     <S.TabItem active={isActive}>
-      <Link to={url} state={{ tabKey: tab }}>
+      <Link to={url} state={{ selectedTabKey: tab }}>
         <>
           {icon} <span>{title}</span>
         </>

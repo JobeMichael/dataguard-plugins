@@ -14,12 +14,11 @@ const ResponsivePage: React.FC = () => {
   const { data, loading, error } = useFetch<IPlugins>(API_URL);
   const [allDisabled, setAllDisabled] = React.useState<boolean>(false);
 
+  const navigate = useNavigate();
   const { plugin } = useParams<{
     plugin: string;
   }>();
-  const { tabKey: selectedTabKey } =
-    useLocation()?.state || ({} as { tabKey: string });
-  const navigate = useNavigate();
+  const state = useLocation().state;
 
   useEffect(() => {
     if (!data || plugin) return;
@@ -58,20 +57,21 @@ const ResponsivePage: React.FC = () => {
     return <div>Error on your request. Try refreshing the page.</div>;
   }
 
-  const allPlugins = getPluginsData(data, selectedTabKey || data.data.tabs[0]);
-  const pluginSortedKey = Object.keys(allPlugins).sort((a, b) =>
+  const currentTabKey = state?.selectedTabKey || data.data.tabs[0];
+  const allPlugins = getPluginsData(data, currentTabKey);
+  const pluginsSortedByKey = Object.keys(allPlugins).sort((a, b) =>
     a.localeCompare(b)
   );
 
   return (
     <Layout data={data} setAllDisabled={setAllDisabled}>
       <S.Wrapper>
-        {pluginSortedKey.map((key) => (
+        {pluginsSortedByKey.map((key) => (
           <Card
             key={key}
             plugin={allPlugins[key]}
             toggleCallback={handleToggleCallback}
-            tabKey={selectedTabKey || data.data.tabs[0]}
+            tabKey={currentTabKey}
             pluginKey={key}
             allDisabled={allDisabled}
           />
