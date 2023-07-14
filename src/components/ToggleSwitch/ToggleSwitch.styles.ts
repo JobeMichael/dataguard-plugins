@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-export const ToggleSwitchContainer = styled.div<{ labelposition: string }>`
+export const ToggleSwitchContainer = styled.div<{
+  labelposition: string;
+}>`
   display: flex;
   align-items: center;
   margin-bottom: 20px;
@@ -43,8 +45,11 @@ export const Slider = styled.span`
   }
 `;
 
-export const ToggleSwitchInput = styled.input.attrs({ type: "checkbox" })`
+export const ToggleSwitchInput = styled.input.attrs({ type: "checkbox" })<{
+  disabled: boolean;
+}>`
   display: none;
+  ${({ disabled }) => disabled && "opacity: 0.3; cursor: not-allowed;"}
 
   &:checked + ${Slider} {
     background-color: #00b96b;

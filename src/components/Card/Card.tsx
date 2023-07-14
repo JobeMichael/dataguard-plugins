@@ -22,14 +22,15 @@ const Card: React.FC<IProps> = ({
   pluginKey,
   allDisabled,
 }) => {
-  const { title, description, active, disabled } = plugin;
+  const { title, description, active } = plugin;
+  const disabled = plugin.disabled || allDisabled;
 
   const handleToggle = (active: boolean) => {
     toggleCallback(tabKey!, active, pluginKey!);
   };
 
   return (
-    <S.Card disabled={disabled || allDisabled}>
+    <S.Card disabled={disabled}>
       <S.CardHeader>
         <S.CardTitle>{title}</S.CardTitle>
         <ToggleSwitch
@@ -37,6 +38,7 @@ const Card: React.FC<IProps> = ({
           activeLabel="Allowed"
           active={active}
           callback={handleToggle}
+          disabled={disabled}
         />
       </S.CardHeader>
       <S.CardDescription>{description}</S.CardDescription>

@@ -21,14 +21,16 @@ const ResponsivePage: React.FC = () => {
   const state = useLocation().state;
 
   useEffect(() => {
-    if (!data || plugin) return;
+    if (!data) return;
 
     const { tabdata, tabs, disabled } = data.data;
-    const url = `${tabdata[tabs[0]].title.toLocaleLowerCase()}`;
-
     setAllDisabled(disabled);
+
+    if (plugin) return;
+
+    const url = `${tabdata[tabs[0]].title.toLocaleLowerCase()}`;
     return navigate(url);
-  }, [data, navigate, plugin]);
+  }, [data]);
 
   const handleToggleCallback = async (
     tabKey: string,

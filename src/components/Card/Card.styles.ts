@@ -41,4 +41,5 @@ export const CardTitle = styled.h2`
 
 export const CardDescription = styled.p`
   margin-top: 10px;
+  line-height: 24px;
 `;

@@ -8,8 +8,9 @@ interface ToggleSwitchProps {
   inactiveLabel?: string;
   labelPosition?: "left" | "bottom";
   active?: boolean;
-  callback: (active: boolean) => void;
   showIcon?: boolean;
+  disabled?: boolean;
+  callback: (active: boolean) => void;
 }
 
 const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
@@ -17,8 +18,9 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
   inactiveLabel,
   labelPosition = "bottom",
   active = false,
-  callback,
   showIcon = false,
+  disabled = false,
+  callback,
 }) => {
   const [isChecked, setIsChecked] = useState(active);
 
@@ -35,7 +37,11 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
         <S.Label>{isChecked ? activeLabel : inactiveLabel}</S.Label>
       )}
       <S.ToggleSwitchWrapper>
-        <S.ToggleSwitchInput checked={isChecked} onChange={handleChange} />
+        <S.ToggleSwitchInput
+          disabled={disabled}
+          checked={isChecked}
+          onChange={handleChange}
+        />
         <S.Slider>
           <S.IconWrapper isChecked={isChecked}>
             {showIcon && <> {isChecked ? <FiPower /> : <FiPower />}</>}
